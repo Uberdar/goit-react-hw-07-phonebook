@@ -1,14 +1,18 @@
-import { removeContacts } from 'components/Operations/operations';
+import { removeContacts } from 'redux/actions/contactsOperations';
 import { useDispatch, useSelector } from 'react-redux';
-// import { deleteidAction } from '../../redux/actions/action';
+import { getFilter, getItems } from 'redux/actions/contactsSelectors';
 
 export default function TodoRender() {
   const dispatch = useDispatch();
-  const items = useSelector(state => state.contacts.items);
+  const filter = useSelector(getFilter);
+  const items = useSelector(getItems);
+  const filtereditems = items.filter(elem =>
+    elem.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+  );
 
   const rendernewElem = () => {
     // console.log('items: ', items);
-    return items.map(elem => {
+    return filtereditems.map(elem => {
       return (
         <div key={elem.id}>
           <span>name: {elem.name} </span>

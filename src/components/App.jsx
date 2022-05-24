@@ -1,15 +1,12 @@
 import Phonebook from './Phonebook/Phonebook';
-import TodoRender from './TodosRenderClass/TodosRender';
+import TodoRender from './TodosRender/TodosRender';
 import { useDispatch } from 'react-redux';
-import { getContacts } from './Operations/operations';
+import { getContacts } from '../redux/actions/contactsOperations';
 import { useEffect } from 'react';
+import Search from './Search/Search';
 export default function App() {
   const dispatch = useDispatch();
-  // async function testAsyncFunc() {
-  //   let x = await fetch('https://628a1a225da6ddfd5d5fbdb3.mockapi.io/contacts');
-  //   let xx = await x.json();
-  //   console.log('xx: ', xx);
-  // }
+
   useEffect(() => {
     dispatch(getContacts());
   });
@@ -17,6 +14,7 @@ export default function App() {
     <div>
       {/* <button onClick={testAsyncFunc}>GETAPIDATA</button> */}
       <Phonebook />
+      <Search />
       <TodoRender />
     </div>
   );

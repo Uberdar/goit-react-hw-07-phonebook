@@ -1,10 +1,8 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { itemsReducer } from './actions/reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import contactsReducer from './actions/contactsReducers';
 
 export const store = configureStore({
   reducer: {
-    contacts: combineReducers({
-      items: itemsReducer,
-    }),
+    contacts: contactsReducer,
   },
 });

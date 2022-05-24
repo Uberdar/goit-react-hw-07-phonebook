@@ -1,4 +1,4 @@
-import { addContacts } from 'components/Operations/operations';
+import { addContacts } from 'redux/actions/contactsOperations';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
